@@ -13,11 +13,13 @@ async def checkJoin(user):
 async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != getenv('KEY'):
         return
+    await bot.SendMessage(user, str(update))
     user, text, chat_type, message_id, utype = getInformation(update)
     if chat_type != 'private':
         return
 
-    await bot.SendMessage(user, 'type '+str(utype))
+    # await bot.SendMessage(user, 'type '+str(utype))
+    await bot.SendMessage(user, str(update))
     match utype:
         case 1:
             ch = await checkJoin(user)
@@ -27,7 +29,6 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
             if text == '/start':
                 await bot.SendMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'], reply_message_id=message_id)
         case 2:
-            await bot.SendMessage(user, str(update))
             if text == 'submit':
                 ch = await checkJoin(user)
                 if ch:
