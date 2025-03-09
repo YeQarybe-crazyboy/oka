@@ -17,19 +17,15 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if chat_type != 'private':
         return
 
-    ch = await checkJoin(user)
-    if ch:
-        await bot.SendMessage(user, getJoinText(ch), buttons['submit'], reply_message_id=message_id)
-        return
-
-
-    await bot.SendMessage(user, str(utype))
     match utype:
         case 1:
+            ch = await checkJoin(user)
+            if ch:
+                await bot.SendMessage(user, getJoinText(ch), buttons['submit'], reply_message_id=message_id)
+                return
             if text == '/start':
                 await bot.SendMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'], reply_message_id=message_id)
         case 2:
-            await bot.SendMessage(user, str(update))
             if text == 'submit':
                 ch = await checkJoin(user)
                 if ch:
