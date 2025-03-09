@@ -1,36 +1,20 @@
 {
-    "start": {
+    "menu": {
         "inline_keyboard":[
             [
                 {
-                    "text": "📍 Pin Settings 📍",
-                    "callback_data": "pinsettings"
+                    "text": "🔖 مشاهده پست ها 🔖📍",
+                    "callback_data": "posts"
                 }
             ],
             [
                 {
-                    "text": "♻️ Check",
-                    "callback_data": "check"
+                    "text": "📌 ارسال پست",
+                    "callback_data": "sendpost"
                 },
                 {
-                    "text": "Change Key 🔑",
-                    "callback_data": "changekey"
-                }
-            ],
-            [
-                {
-                    "text": "➕ Add Admin",
-                    "callback_data": "addadmin"
-                },
-                {
-                    "text": "Remove Admin ➖",
-                    "callback_data": "removeadmin"
-                }
-            ],
-            [
-                {
-                    "text": "ᴅᴇᴠᴇʟᴏᴘᴇʀ",
-                    "url": "t.me/Py_Sudo"
+                    "text": "پست های من 📝",
+                    "callback_data": "myposts"
                 }
             ]
         ]
