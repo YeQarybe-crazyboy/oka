@@ -15,7 +15,9 @@ class ManageBot:
         return await self.sendRequest('sendmessage', {'message_id': message_id, 'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode})
 
     async def isJoin(self, channel, user):
-        return (await self.sendRequest('getChatMember', {'chat_id': channel, 'user_id': user}))['ok']
+        res = await self.sendRequest('getChatMember', {'chat_id': channel, 'user_id': user})
+        if res['ok']:
+            return res['result']['status'] != 'left'
 
 def getInformation(u):
     if 'message' in u:
