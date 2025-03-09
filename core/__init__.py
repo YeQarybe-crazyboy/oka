@@ -8,7 +8,7 @@ with open('keyboards.json') as i:
     buttons = load(i)
 
 KEY = getenv('KEY')
-ADMIN = getenv('ADMIN')
+ADMIN = int(getenv('ADMIN'))
 db = EdgeConfig(getenv('ID'), 'https://{}.vercel.com/', getenv('TOKEN'), getenv('BEARER'))
 db+['posts', []]
 db+['channels', ['@FuckingDaily']]
