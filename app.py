@@ -10,8 +10,12 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
         db+[user, {'step': str(), 'm': int()}]
 
     userInfo = db[user]
-    step = userInfo.get('step')
-    m_id = userInfo.get('m')
+    if userInfo:
+        step = userInfo.get('step')
+        m_id = userInfo.get('m')
+    else:
+        step = str()
+        m_id = int()
     channels = db['channels']
 
     if chat_type != 'private':
@@ -24,7 +28,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
                     channels.append(text)
                     db+['channels', channels]
                     await bot.deleteMessage(user, message_id)
-                    await bot.EditMessage(user, f'✅ کانال {text} با موفقیت اضافه شد\nاز دکمه های زیر استفاده کن :', message_id, buttons['panel'])
+                    await bot.EditMessage(user, f'✅ کانال {text} با موفقیت اضافه شد\nاز دکمه های زیر استفاده کن :', m_id, buttons['panel'])
                     await updateStep(user, str(), 0)
 
             else:
