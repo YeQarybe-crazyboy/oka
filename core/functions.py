@@ -25,8 +25,7 @@ def getInformation(u):
         return (m['from']['id'], m['text'], m['chat']['type'], m['message_id'], 1)
     elif 'callback_query' in u:
         m = u['callback_query']
-        # return (m['from']['id'], m['data'], m['message']['chat']['type'], m['message']['message_id'], 2)
-        return (m['from']['id'], m['data'], m['message']['chat']['type'], 'del', 2)
+        return (m['from']['id'], m['data'], m['message']['chat']['type'], None, 2)
 
 def getJoinText(channels):
     text = "❗️ لطفا اول توی کانال {} جوین شو :\n{}"
