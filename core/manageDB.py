@@ -19,6 +19,7 @@ class EdgeConfig:
         return {'Authorization': 'Bearer '+(self.BEARER if auth_type else self.TOKEN), 'Content-Type': 'application/json'}
 
     def addItem(self, key, value):
+        key = str(key)
         operation = 'update' if self[key] else 'create'
         return patch(self.URL+'items', headers=self.__auth__(), json=self.__create_dict__(operation, key, value)).json()
 
