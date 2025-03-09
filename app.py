@@ -6,6 +6,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != KEY:
         return
     user, text, chat_type, message_id, utype = getInformation(update)
+    await bot.SendMessage(user, 'test')
     if not db[user]:
         db+[user, {'step': str(), 'm': int()}]
 
@@ -16,6 +17,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     else:
         step = str()
         m_id = int()
+
     channels = db['channels']
 
     if chat_type != 'private':
