@@ -18,20 +18,22 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if chat_type != 'private':
         return
 
+    await bot.SendMessage(user, 'type '+str(utype))
     match utype:
         case 1:
             ch = await checkJoin(user)
             if ch:
                 await bot.SendMessage(user, getJoinText(ch), buttons['submit'], reply_message_id=message_id)
                 return
-            if text == '/start':
+            elif text == '/start':
                 await bot.SendMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'], reply_message_id=message_id)
         case 2:
             await bot.SendMessage(user, str(update))
             if text == 'submit':
-                ch = await checkJoin(user)
-                if ch:
-                    await bot.sendRequest('answerCallbackQuery', {'callback_query_id': update['callback_query']['id'], 'text': '❌ هنوز جوین نشدی'})
-                    return
-                else:
-                    await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'])
+                await bot.SendMessage(user, 'ok submit')
+                # ch = await checkJoin(user)
+                # if ch:
+                #     await bot.sendRequest('answerCallbackQuery', {'callback_query_id': update['callback_query']['id'], 'text': '❌ هنوز جوین نشدی'})
+                #     return
+                # else:
+                #     await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'])
