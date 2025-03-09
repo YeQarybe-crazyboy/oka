@@ -14,11 +14,11 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != getenv('KEY'):
         return
     user, text, chat_type, message_id, utype = getInformation(update)
+    await bot.SendMessage(user, f'user {user}\ntext {text}\nchat_type {chat_type}\nmessage_id {message_id}\nutype {utype}')
 
     if chat_type != 'private':
         return
 
-    await bot.SendMessage(user, 'type '+str(utype))
     match utype:
         case 1:
             ch = await checkJoin(user)
