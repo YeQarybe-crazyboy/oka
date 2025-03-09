@@ -14,6 +14,9 @@ class ManageBot:
     async def EditMessage(self, chat_id, text, message_id, buttons=None, parse_mode=None):
         return await self.sendRequest('editMessageText', {'message_id': message_id, 'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode})
 
+    async def deleteMessage(self, chat_id, message_id):
+        return await self.sendRequest('deleteMessage', {'chat_id': chat_id, 'message_id': message_id})
+
     async def isJoin(self, channel, user):
         res = await self.sendRequest('getChatMember', {'chat_id': channel, 'user_id': user})
         if res['ok']:
@@ -33,3 +36,4 @@ def getJoinText(channels):
     if len(channels) == 1:
         return text.format('های ما', ch)
     return text.format('ما', ch)
+
