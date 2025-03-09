@@ -3,7 +3,7 @@
         "inline_keyboard":[
             [
                 {
-                    "text": "🔖 مشاهده پست ها 🔖📍",
+                    "text": "🔖 مشاهده پست ها 🔖",
                     "callback_data": "posts"
                 }
             ],
@@ -15,6 +15,32 @@
                 {
                     "text": "📝 پست های من",
                     "callback_data": "myposts"
+                }
+            ],
+            [
+                {
+                    "text": "ᴅᴇᴠᴇʟᴏᴘᴇʀ",
+                    "url": "t.me/Py_Sudo"
+                }
+            ]
+        ]
+    },
+    "panel": {
+        "inline_keyboard": [
+            [
+                {
+                    "text": "افزودن چنل ➕",
+                    "callback_data": "addchannel"
+                },
+                {
+                    "text": "➖ حذف چنل",
+                    "callback_data": "removechannel"
+                }
+            ],
+            [
+                {
+                    "text": "📝 مدیریت پست ها 📝",
+                    "callback_data": "manageposts"
                 }
             ]
         ]
