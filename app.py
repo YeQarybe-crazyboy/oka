@@ -13,8 +13,8 @@ async def checkJoin(user):
 async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != getenv('KEY'):
         return
-    await bot.SendMessage(user, str(update))
     user, text, chat_type, message_id, utype = getInformation(update)
+    await bot.SendMessage(user, str(update))
     if chat_type != 'private':
         return
 
