@@ -15,5 +15,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
         if not (await bot.isJoin(channel, user)):
             ch.append(channel)
     if ch:
-        await bot.SendMessage(user, getJoinText(ch), buttons['submit'], reply_message_id=message_id)
+        await bot.SendMessage(user, getJoinText(ch), reply_message_id=message_id)
         return
+    else:
+        await bot.SendMessage(user, 'ok')
