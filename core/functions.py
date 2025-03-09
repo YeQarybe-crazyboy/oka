@@ -9,7 +9,7 @@ class ManageBot:
         return get('https://api.telegram.org/bot{}/{}'.format(self.__TOKEN, METHOD), params=PARAMS).json()
 
     async def SendMessage(self, chat_id, text, buttons=None, parse_mode=None, reply_message_id=None):
-        return await self.sendRequest('sendmessage', {'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode, 'reply_to_message_id': reply_message_id})
+        return await self.sendRequest('sendmessage', {'chat_id': chat_id, 'text': str(text), 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode, 'reply_to_message_id': reply_message_id})
 
     async def EditMessage(self, chat_id, text, message_id, buttons=None, parse_mode=None):
         return await self.sendRequest('sendmessage', {'message_id': message_id, 'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode})
