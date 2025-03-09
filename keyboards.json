@@ -54,5 +54,16 @@
                 }
             ]
         ]
+    },
+    "back": {
+        "inline_keyboard": [
+            [
+                {
+                    "text": "🔙",
+                    "callback_data": "back"
+                }
+            ]
+        ]
     }
+
 }
