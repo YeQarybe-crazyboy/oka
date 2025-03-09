@@ -14,7 +14,6 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != getenv('KEY'):
         return
     user, text, chat_type, message_id, utype = getInformation(update)
-    await bot.SendMessage(user, f'user {user}\ntext {text}\nchat_type {chat_type}\nmessage_id {message_id}\nutype {utype}')
 
     if chat_type != 'private':
         return
@@ -28,12 +27,10 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
             elif text == '/start':
                 await bot.SendMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'], reply_message_id=message_id)
         case 2:
-            await bot.SendMessage(user, str(update))
             if text == 'submit':
-                await bot.SendMessage(user, 'ok submit')
-                # ch = await checkJoin(user)
-                # if ch:
-                #     await bot.sendRequest('answerCallbackQuery', {'callback_query_id': update['callback_query']['id'], 'text': '❌ هنوز جوین نشدی'})
-                #     return
-                # else:
-                #     await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'])
+                ch = await checkJoin(user)
+                if ch:
+                    await bot.sendRequest('answerCallbackQuery', {'callback_query_id': update['callback_query']['id'], 'text': '❌ هنوز جوین نشدی'})
+                    return
+                else:
+                    await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'])
