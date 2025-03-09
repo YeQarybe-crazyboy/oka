@@ -22,6 +22,8 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
         await bot.SendMessage(user, getJoinText(ch), buttons['submit'], reply_message_id=message_id)
         return
 
+
+    await bot.SendMessage(user, str(utype))
     match utype:
         case 1:
             if text == '/start':
