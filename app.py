@@ -13,7 +13,6 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if md5(key.encode()).hexdigest() != KEY:
         return
     user, text, chat_type, message_id, utype = getInformation(update)
-    await bot.SendMessage(user, 'message_id '+str(message_id))
 
     if chat_type != 'private':
         return
