@@ -12,7 +12,7 @@ class ManageBot:
         return await self.sendRequest('sendmessage', {'chat_id': chat_id, 'text': str(text), 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode, 'reply_to_message_id': reply_message_id})
 
     async def EditMessage(self, chat_id, text, message_id, buttons=None, parse_mode=None):
-        return await self.sendRequest('sendmessage', {'message_id': message_id, 'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode})
+        return await self.sendRequest('editMessageText', {'message_id': message_id, 'chat_id': chat_id, 'text': text, 'reply_markup': dumps(buttons) if buttons else None, 'parse_mode': parse_mode})
 
     async def isJoin(self, channel, user):
         res = await self.sendRequest('getChatMember', {'chat_id': channel, 'user_id': user})
@@ -25,7 +25,7 @@ def getInformation(u):
         return (m['from']['id'], m['text'], m['chat']['type'], m['message_id'], 1)
     elif 'callback_query' in u:
         m = u['callback_query']
-        return (m['from']['id'], m['data'], m['message']['chat']['type'], None, 2)
+        return (m['from']['id'], m['data'], m['message']['chat']['type'], m['message']['message_id'], 2)
 
 def getJoinText(channels):
     text = "❗️ لطفا اول توی کانال {} جوین شو :\n{}"
