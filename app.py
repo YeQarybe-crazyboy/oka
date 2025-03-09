@@ -8,7 +8,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
         return
     user, text, chat_type, message_id, utype = getInformation(update)
     await bot.SendMessage(user, 'okaaaaaa')
-    if utype != 'private':
+    if chat_type != 'private':
         return
     ch = list()
     for channel in db['channels'] and user != ADMIN:
