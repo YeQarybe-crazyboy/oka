@@ -1,0 +1,48 @@
+{
+    "start": {
+        "inline_keyboard":[
+            [
+                {
+                    "text": "📍 Pin Settings 📍",
+                    "callback_data": "pinsettings"
+                }
+            ],
+            [
+                {
+                    "text": "♻️ Check",
+                    "callback_data": "check"
+                },
+                {
+                    "text": "Change Key 🔑",
+                    "callback_data": "changekey"
+                }
+            ],
+            [
+                {
+                    "text": "➕ Add Admin",
+                    "callback_data": "addadmin"
+                },
+                {
+                    "text": "Remove Admin ➖",
+                    "callback_data": "removeadmin"
+                }
+            ],
+            [
+                {
+                    "text": "ᴅᴇᴠᴇʟᴏᴘᴇʀ",
+                    "url": "t.me/Py_Sudo"
+                }
+            ]
+        ]
+    },
+    "submit": {
+        "inline_keyboard": [
+            [
+                {
+                    "text": "✅",
+                    "callback_data": "submit"
+                }
+            ]
+        ]
+    }
+}
