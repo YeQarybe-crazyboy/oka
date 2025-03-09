@@ -33,4 +33,4 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
                     await bot.sendRequest('answerCallbackQuery', {'callback_query_id': update['callback_query']['id'], 'text': '❌ هنوز جوین نشدی'})
                     return
                 else:
-                    await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons=buttons['menu'])
+                    await bot.EditMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', message_id, buttons=buttons['menu'])
