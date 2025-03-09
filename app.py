@@ -11,8 +11,8 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
     if chat_type != 'private':
         return
     ch = list()
-    for channel in db['channels'] and user != ADMIN:
-        await bot.SendMessage(user, 'this '+str(await bot.isJoin(channel, user)))
+    for channel in db['channels']:
+        await bot.SendMessage(user, (await bot.isJoin(channel, user)))
         if not (await bot.isJoin(channel, user)):
             ch.append(channel)
     if ch:
