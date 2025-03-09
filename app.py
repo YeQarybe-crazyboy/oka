@@ -27,6 +27,7 @@ async def Bot(key: str, update: dict = Body(...,embed=False)):
             if text == '/start':
                 await bot.SendMessage(user, ' ✅عضویت شما تایید شد.\n👇🏼 از دکمه های زیر استفاده کن', buttons['menu'], reply_message_id=message_id)
         case 2:
+            await bot.SendMessage(user, str(update))
             if text == 'submit':
                 ch = await checkJoin(user)
                 if ch:
